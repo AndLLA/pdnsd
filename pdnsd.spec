@@ -18,7 +18,7 @@
 # --define "distro <distro>" 	Configure with --with-distribution=<distro>.
 #
 # --define "run_as_user <user>" Configure with --with-default-id=<user>.
-#                               For RPMs the default <user> is "pdnsd".
+#                               For RPMs the default <user> is "nobody".
 #
 # --define "run_as_uid <uid>" 	If the user defined by the previous option does not exist
 #                               when the RPM is installed, the pre-install script will try
@@ -27,22 +27,10 @@
 # --define "cachedir <dir>" 	Configure with --with-cachedir=<dir>.
 #
 
-%if 0%{!?distro:1}
-%if "%{_vendor}" == "redhat"
-%define distro RedHat
-%else
-%if "%{_vendor}" == "suse"
-%define distro SuSE
-%else
-%if "%{_vendor}" == "SuSE"
-%define distro SuSE
-%endif
-%endif
-%endif
-%endif
+%{!?distro: %define distro Generic}
 
 # The default run_as ID to use
-%{!?run_as_user: %define run_as_user pdnsd}
+%{!?run_as_user: %define run_as_user nobody}
 # By default, if a new run_as_user is to be created, we let
 # useradd choose the numerical uid, unless run_as_uid is defined.
 #define run_as_uid 96

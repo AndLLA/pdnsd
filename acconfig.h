@@ -130,7 +130,7 @@
  * so e.g. HASH_SZ set to 10 yields 1024 hash rows.
  * HASH_SZ may not be bigger than 32 (if you set it even close to that value,
  * you are nuts.) */
-#define HASH_SZ 10
+#define HASH_SZ 20
 
 /* Set this to debug the hash tables. Turn this off normally, or you will get
  * flooded with diagnostic messages */
